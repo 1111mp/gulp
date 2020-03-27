@@ -16,10 +16,12 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject",
+    "sprite": "cross-env gulp build:sprite",
+    "sprite:ui": "cross-env gulp build:ui-sprites"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +37,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "customize-cra": "^0.9.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp.spritesmith": "^6.11.0",
+    "merge-stream": "^2.0.0",
+    "react-app-rewire-stylus-modules": "^0.0.2",
+    "react-app-rewired": "^2.1.5",
+    "ts-node": "^8.8.1",
+    "vinyl-buffer": "^1.0.1"
   }
 }

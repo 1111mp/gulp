@@ -1,0 +1,135 @@
+spriteWidth($sprite) {
+  width: $sprite[4];
+}
+
+spriteHeight($sprite) {
+  height: $sprite[5];
+}
+
+spritePosition($sprite) {
+  background-position: $sprite[2] $sprite[3];
+}
+
+spriteBackgroundSize($sprite) {
+  background-size: $sprite[6] $sprite[7];
+}
+
+spriteImage($sprite) {
+  background-image: url($sprite[8]);
+}
+
+spriteOrigin($sprite) {
+  spriteImage($sprite);
+  spritePosition($sprite);
+  spriteWidth($sprite);
+  spriteHeight($sprite);
+}
+
+sprites($sprites) {
+  for $sprite in $sprites {
+    $sprite_name = $sprite[9];
+    .{$sprite_name} {
+      spriteOrigin($sprite)
+    }
+  }
+}
+
+spriteStretch($sprite, $width, $height, $offsetX = 0, $offsetY = 0)
+  $widthRate = $width / $sprite[4]
+  $heightRate = $height / $sprite[5]
+
+  $x = $sprite[2] * $widthRate + $offsetX
+  $y = $sprite[3] * $heightRate + $offsetY
+
+  spriteImage($sprite)
+  background-position round($x) round($y)
+  background-size round($sprite[6] * $widthRate) round($sprite[7] * $heightRate)
+  width $width px
+  height $height px
+
+spriteCover($sprite, $width, $height, $posX = left, $posY = top)
+  $widthRate = $width / $sprite[4]
+  $heightRate = $height / $sprite[5]
+  $rate = max($widthRate, $heightRate)
+
+  $x = $sprite[2] * $rate
+  $y = $sprite[3] * $rate
+
+  if $rate == $widthRate
+    if $posY == center
+      $y = $y - ($sprite[5] * $rate - $height) / 2
+    else if $posY == bottom
+      $y = $y - ($sprite[5] * $rate - $height)
+  else
+    if $posX == center
+      $x = $x - ($sprite[4] * $rate - $width) / 2
+    else if $posX == right
+      $x = $x - ($sprite[4] * $rate - $width)
+
+  spriteImage($sprite)
+  background-position round($x) round($y)
+  background-size round($sprite[6] * $rate) round($sprite[7] * $rate)
+  width $width px
+  height $height px
+
+spriteCoverOffset($sprite, $width, $height, $offsetX = 0, $offsetY = 0)
+  $widthRate = $width / $sprite[4]
+  $heightRate = $height / $sprite[5]
+  $rate = max($widthRate, $heightRate)
+
+  $x = $sprite[2] * $rate + $offsetX
+  $y = $sprite[3] * $rate + $offsetY
+
+  spriteImage($sprite)
+  background-position round($x) round($y)
+  background-size round($sprite[6] * $rate) round($sprite[7] * $rate)
+  width $width px
+  height $height px
+
+spriteContain($sprite, $width, $height, $offsetX = 0, $offsetY = 0)
+  $widthRate = $width / $sprite[4]
+  $heightRate = $height / $sprite[5]
+  $rate = min($widthRate, $heightRate)
+
+  $x = $sprite[2] * $rate + $offsetX
+  $y = $sprite[3] * $rate + $offsetY
+
+  spriteImage($sprite)
+  background-position round($x) round($y)
+  background-size round($sprite[6] * $rate) round($sprite[7] * $rate)
+  width round($sprite[4] * $rate) px
+  height round($sprite[5] * $rate) px
+
+sprite($sprite, $width = undefined, $height = undefined, $mode = undefined, $posX = undefined, $posY = undefined)
+  if $width is undefined
+    spriteOrigin($sprite)
+  else if $mode == cover
+    if $posX is a 'unit'
+      if $posY is undefined
+        $posY = 0
+      spriteCoverOffset($sprite, $width, $height, $posX, $posY)
+    else
+      if $posX == center && $posY is undefined
+        $posY = center
+      spriteCover($sprite, $width, $height, $posX, $posY)
+  else if $mode == contain
+    spriteContain($sprite, $width, $height)
+  else if $mode == stretch
+    if $posX is undefined
+      $posX = 0
+      $posY = 0
+    if $posY is undefined
+      $posY = 0
+    spriteStretch($sprite, $width, $height, $posX, $posY)
+  else
+    spriteStretch($sprite, $width, $height)
+
+retinaSprite($retina_group, $width = undefined, $height = undefined, $mode = undefined, $posX = undefined, $posY = undefined) {
+  $normal_sprite = $retina_group[1]
+  $retina_sprite = $retina_group[2]
+  sprite($normal_sprite)
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    sprite($retina_sprite)
+  }
+}
