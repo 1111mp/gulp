@@ -1,0 +1,171 @@
+.msg_box-wrapper
+	position fixed
+	left 5px
+	bottom 5px
+	width 290px
+	min-height 200px
+	z-index 999
+	background-color #44444B
+	border 1px solid #FF661E
+	box-shadow 0px 0px 10px 0px rgba(255,82,0,1)
+.msg_box-header
+	height 32px
+	line-height 32px
+	padding 0 12px
+	color #A4A4B1
+	background-color #39393F
+	.msg_box-container-close
+		position absolute
+		top 2px
+		right 2px
+		display flex
+		justify-content center
+		align-items center
+		width 28px
+		height 28px
+		overflow hidden
+		text-align center
+		cursor pointer
+		.icontop-close
+			display block
+			font-size 36px
+			box-sizing border-box
+			margin 0 auto
+			color rgba(214, 214, 214, 0.3)
+		&:hover
+			background-color transparent
+			.icontop-close
+				color rgba(214, 214, 214, 0.5)
+		&:active
+			.icontop-close
+				color rgba(214, 214, 214, 0.25)
+.msg_box-content
+	padding 14px 24px 14px
+	.msg_box-avatar
+		width 40px
+		height 40px
+		margin 0 auto
+		border-radius 50%
+		background-color #2E2E31
+		background-image url('../images/msg_box_avatar.png')
+		background-position center
+		background-repeat no-repeat
+		background-size cover
+	.msg_box-name, .msg_box-desc
+		margin-top 8px
+		font-size 13px
+		font-weight 400
+		text-align center
+	.msg_box-name
+		color #FF5200
+	.msg_box-desc
+		color #A4A4B1
+		margin 12px 12px 14px
+		.name
+			color #FF5200
+	.reject-tip
+		margin-top 32px
+.msg_box-footer
+	flexBox(justify:center,align:center)
+	border-top 1px solid rgba(0,0,0,.1)
+	margin 0 24px
+	padding 12px 0
+	.msg_box-btn
+		width 86px
+		height 28px
+		font-size 12px
+		line-height 28px
+		text-align center
+		color #FF5200
+		font-weight bold
+		border 2px solid #FF5200
+		border-radius 16px
+		cursor pointer
+		&:hover
+			color #1E1E21
+			background-color #FF5200
+		&:active
+			color #1E1E21
+			background-color #C75116
+			border-color rgba(255,82,0,1)
+.delete-wrapper
+	position fixed
+	top 50%
+	left 50%
+	width 290px
+	z-index 999
+	transform translate(-50%, -50%)
+	border 1px solid #000000
+	background-color #44444B
+	box-shadow none
+.custom-wrapper
+	min-height 220px
+	flexBox(direction:column)
+	.msg_box-header
+		width calc(100% - 24px)
+	.msg_box-content
+		flex 1
+		flexBox(align:center)
+	.msg_box-footer
+		width calc(100% - 48px)
+.delete-wrapper-bg
+	position fixed
+	top 0
+	left 0
+	right 0
+	bottom 0
+	z-index 999
+	background-color rgba(0,0,0,.6)
+
+.msg_box-enter, .msg_box-appear
+  opacity 0
+  // transform translateY(100px)
+
+.msg_box-enter-active, .msg_box-appear-active
+  opacity 1
+  // transform translateY(0)
+  transition all .2s linear
+
+.msg_box-enter-done
+  opacity 1
+  // transform translateY(0)
+  /* color: red; */
+
+.msg_box-exit
+  opacity 1
+  // transform translateY(0)
+
+.msg_box-exit-active
+  opacity 0
+  // transform translateY(100px)
+  transition all .2s linear
+
+.msg_box-exit-done
+  opacity 0
+  // transform translateY(100px)
+
+.notice_box-enter, .notice_box-appear
+  opacity 0
+  transform translateY(100px)
+
+.notice_box-enter-active, .notice_box-appear-active
+  opacity 1
+  transform translateY(0)
+  transition all .2s linear
+
+.notice_box-enter-done
+  opacity 1
+  transform translateY(0)
+
+.notice_box-exit
+  opacity 1
+  transform translateY(0)
+
+.notice_box-exit-active
+  opacity 0
+  transform translateY(100px)
+  transition all .2s linear
+
+.notice_box-exit-done
+  opacity 0
+  transform translateY(100px)

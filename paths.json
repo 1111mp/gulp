@@ -1,9 +1,16 @@
-  
 {
 	"compilerOptions": {
+		"rootDir": "./",
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["src/*"]
+			"@/*": ["src/*"],
+			"routes/*": ["src/routes/*"],
+			"stores/*": ["src/stores/*"],
+			"pages/*": ["src/pages/*"],
+			"components/*": ["src/components/*"],
+			"common/*": ["src/common/*"],
+			"service/*": ["src/common/service/*"],
+			"utils/*": ["src/common/utils/*"]
 		}
 	}
 }

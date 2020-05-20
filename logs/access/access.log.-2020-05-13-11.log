@@ -1,0 +1,1 @@
+[2020-05-13T11:23:17.003] [INFO] http - {"s_ip":"192.168.80.208","c_ip":"127.0.0.1","query_string":"{}","url":"/time","method":"GET","status":"308","referrer":"http://127.0.0.1:9090/","remote-addr":"::ffff:127.0.0.1","response-time":"14","user-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"}
